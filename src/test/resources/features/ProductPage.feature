@@ -1,16 +1,25 @@
 Feature: Verify category and subcategory options
-  Background:
-    Given Go to url
 
-  Scenario: Go to categories and select the product item
-  Given search the product "samsung galaxy a51"
-    And count the listed product
-  Then click on any product from the search list
-#    Given filter the phone brand
-#    When enter max price "500"
-#    And select the cashback store
-#    And click on done button
-#    And apply sort
-#    Then scroll down to the page
-#    And click on next page
-#    Then current page is "p=2"
+  Scenario Outline: Search product from search box
+    Given search the product '<ProductName>'
+#    Then '<ProductName>' should be in the search list
+    And click on any product from the search list
+    Examples:
+    |ProductName       |
+    |samsung galaxy a51|
+
+#  product should be in the search list
+
+    Scenario Outline: Apply filters and sort then click on next page
+      Given apply filter on category '<category>' and brand '<brand>' and cashback store '<cashbackStore>'
+      And enter min and max price '<minPrice>' and '<maxPrice>'
+      And click on done button
+      And apply sort '<sort>'
+      Then scroll down to the page
+      And click on next page
+      Then current page should contains '<pageNumber>'
+      Examples:
+      |category|brand  |cashbackStore|minPrice|maxPrice|sort             |pageNumber|
+      |        |Samsung|Lazada       |100     |1000     |Price Low to High|p=2       |
+
+#      need to do all steps from home page, click on cat and subcat
