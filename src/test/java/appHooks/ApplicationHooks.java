@@ -37,18 +37,24 @@ public class ApplicationHooks {
         driverFactory = new DriverFactory();
         driver = driverFactory.init_driver(prop,browser);
     }
-//    @After(order = 0)
-//    public void quitBrowser(){
-//        driver.quit();
-//    }
-//    @After(order = 1)
-//    public void tearDown(Scenario scenario){
-//        if(scenario.isFailed()){
-//            log.error("Capturing Screenshot for Failed Test cases.");
-//            String screenshotName = scenario.getName().replaceAll("","_") ;
-//            byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-//            scenario.attach(sourcePath,"image/png",screenshotName);
-//        }
-//
-//    }
+    @Before(order = 2)
+    public void launchUrl(){
+        log.info("shopback url is launched");
+        prop = configReader.init_prop();
+        driver.get(prop.getProperty("url"));
+    }
+    @After(order = 0)
+    public void quitBrowser(){
+        driver.quit();
+    }
+    @After(order = 1)
+    public void tearDown(Scenario scenario){
+        if(scenario.isFailed()){
+            log.error("Capturing Screenshot for Failed Test cases.");
+            String screenshotName = scenario.getName().replaceAll("","_") ;
+            byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(sourcePath,"image/png",screenshotName);
+        }
+
+    }
 }

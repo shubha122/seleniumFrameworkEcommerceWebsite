@@ -4,7 +4,6 @@ import com.qa.util.ConfigReader;
 import com.qa.util.ElementUtil;
 import com.qa.util.JavaScriptUtil;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -19,13 +18,16 @@ public class ProductPage {
     JavaScriptUtil javaScriptUtil;
 
     //Locators
-    private By maxPriceLocator = By.xpath(".//input[@class='form-control border-none rounded' and @placeholder ='$ max']");
-//    private By doneButton = By.xpath(".//button[text()='Done']");
-    private By sortDropdown = By.xpath(".//div[@id='dropdown']");
-    private By priceLowToHigh = By.xpath(".//li[text()='Price Low to High']");
-//    private By nextPageLink = By.xpath(".//a[text()='2']");
-    private By searchTextBox = By.xpath(".//input[@id='header-desktop-search-input']");
-//    private By productList = By.xpath(".//*[@class='product-listing-content flex flex-wrap']/div[1]");
+    private final By searchTextBox = By.xpath(".//input[@id='header-desktop-search-input']");
+    private final By searchList = By.xpath(".//a[@class='flex flex-col w-2/3 flex-auto text-neutral-700 no-underline']");
+    private final By categoryFilter = By.xpath(".//div[contains(@class,'category-filter')]//div[@class='filter-check-item']/label");
+    private final By brandFilter = By.xpath(".//div[contains(@class,'brand-filter')]//div[@class='filter-check-item']/label");
+    private final By cashBackStoreFilter = By.xpath(".//div[contains(@class,'store-filter')]//div[@class='filter-check-item']/label");
+    private final By priceInput = By.xpath(".//div[contains(@class,'price-input-field')]/input");
+    private final By doneButton = By.xpath(".//button[text()='Done']");
+    private final By sortDropdownLink = By.xpath(".//div[@id='dropdown']");
+    private final By sortSelection = By.xpath(".//li[@class='dropdown-list-option cursor-pointer']");
+    private final By paginationLink = By.xpath(".//div[@class='btn-group pagination-list']/a");
 
     //Constructor
     public ProductPage(WebDriver driver){
@@ -38,42 +40,53 @@ public class ProductPage {
     public void setProductDetails(String productName){
         elementUtil.doSendKeysAndEnter(searchTextBox,productName);
     }
-    public void countListedProduct(){
+    public void clickOnProduct(){
+         List<WebElement> productSearchList = elementUtil.getElements(searchList);
+         javaScriptUtil.clickElementByJS(productSearchList.get(0));
+    }
+    public void setCategoryFilter(String categoryItem){
+        List<WebElement> categoryFilterList = elementUtil.getElements(categoryFilter);
+        javaScriptUtil.clickElementByJS(categoryFilterList,categoryItem);
+    }
+    public void setBrandFilter(String brandName){
+        List<WebElement> brandFilterList = elementUtil.getElements(brandFilter);
+        javaScriptUtil.clickElementByJS(brandFilterList,brandName);
+    }
+    public void setCashbackStoreFilter(String storeName){
+        List<WebElement> storeFilterList = elementUtil.getElements(cashBackStoreFilter);
+        javaScriptUtil.clickElementByJS(storeFilterList,storeName);
+    }
+
+    public void setPriceInput(String minPrice,String maxPrice)  {
+        List<WebElement> priceInputList = elementUtil.getElements(priceInput);
+        for(WebElement element : priceInputList){
+            if(elementUtil.getValueByAttribute(element,"placeholder").equalsIgnoreCase("$ min"))
+                elementUtil.doSendKeys(element,minPrice);
+            else if(elementUtil.getValueByAttribute(element,"placeholder").equalsIgnoreCase("$ max"))
+                elementUtil.doSendKeys(element,maxPrice);
+        }
+    }
+
+    public void clickOnDoneButton(){
+//        WebElement element = elementUtil.getElement(doneButton);
+//        javaScriptUtil.clickElementByJS(element);
+            WebElement doneButton= driver.findElement(By.xpath(".//button[text()='Done']"));
+            javaScriptUtil.clickElementByJS(doneButton);
 
     }
-    public void clickOnProduct(){
-         List<WebElement> productDetail = driver.findElements(By.xpath(".//a[@class='flex flex-col w-2/3 flex-auto text-neutral-700 no-underline']"));
-         javaScriptUtil.clickElementByJS(productDetail.get(0));
+    public void setSortSelection(String sortOption){
+        elementUtil.doClick(sortDropdownLink);
+        List<WebElement> sortSelectionList = elementUtil.getElements(sortSelection);
+        javaScriptUtil.clickElementByJS(sortSelectionList,sortOption);
     }
-    public void filterBrandName() throws InterruptedException {
-        Thread.sleep(5000);
-        WebElement filterBrand= driver.findElement(By.id("brand-filter-47"));
-        javaScriptUtil.clickElementByJS(filterBrand);
-    }
-    public void setMaxPrice(String maxPrice)  {
-        elementUtil.doSendKeys(maxPriceLocator,maxPrice);
-    }
-    public void selectCashbackStore(){
-        WebElement cashBackStroe = driver.findElement(By.id("store-filter-1"));
-        javaScriptUtil.clickElementByJS(cashBackStroe);
-    }
-    public void clickOnDoneButton(){
-        WebElement doneButton= driver.findElement(By.xpath(".//button[text()='Done']"));
-        javaScriptUtil.clickElementByJS(doneButton);
-    }
-    public void clickOnSortByLink() throws InterruptedException {
-//        Thread.sleep(2000);
-        elementUtil.doClick(sortDropdown);
-        elementUtil.doClick(priceLowToHigh);
-    }
-    public void scrollDownToPage() throws InterruptedException {
+    public void scrollDownToPage() {
        javaScriptUtil.scrollPageDown();
-       Thread.sleep(7000);
+       elementUtil.waitForRequiredSec(10);
     }
-    public void clickNextPage() throws InterruptedException {
-        WebElement nextPageLink= driver.findElement(By.xpath(".//a[text()='2']"));
-        javaScriptUtil.clickElementByJS(nextPageLink);
-        Thread.sleep(2000);
+    public void clickNextPage() {
+        List<WebElement> paginationList = elementUtil.getElements(paginationLink);
+        javaScriptUtil.clickElementByJS(paginationList,"2");
+        elementUtil.waitForRequiredSec(5);
     }
 }
 

@@ -16,8 +16,8 @@ public class ProductPageSteps {
     public void search_the_product(String productName) {
         productPage.setProductDetails(productName);
     }
-    @Then("count the listed product")
-    public void count_the_listed_product() {
+    @Then("{string} should be in the search list")
+    public void should_be_in_the_search_list() {
 
     }
     @Given("click on any product from the search list")
@@ -25,41 +25,42 @@ public class ProductPageSteps {
         productPage.clickOnProduct();
     }
 
-    @Given("filter the phone brand")
-    public void filter_the_phone_brand() throws InterruptedException {
-        productPage.filterBrandName();
+    @Given("apply filter on category {string} and brand {string} and cashback store {string}")
+    public void apply_filter_brand_cashback(String categoryFilter,String brandFilter,String storeFilter) {
+        if(!categoryFilter.equals(""))
+            productPage.setCategoryFilter(categoryFilter);
+        if(!brandFilter.equals(""))
+            productPage.setBrandFilter(brandFilter);
+        if(!storeFilter.equals(""))
+        productPage.setCashbackStoreFilter(storeFilter);
     }
-    @When("enter max price {string}")
-    public void enter_max_price(String maxPrice) {
-        productPage.setMaxPrice(maxPrice);
+    @When("enter min and max price {string} and {string}")
+    public void enter_min_max_price(String minPrice,String maxPrice){
+        if(!minPrice.equals("") && !maxPrice.equals(""))
+            productPage.setPriceInput(minPrice,maxPrice);
     }
-
-    @When("select the cashback store")
-    public void select_the_cashback_store() {
-      productPage.selectCashbackStore();
-    }
-
     @When("click on done button")
     public void click_on_done_button() {
         productPage.clickOnDoneButton();
     }
 
-    @When("apply sort")
-    public void apply_sort() throws InterruptedException {
-        productPage.clickOnSortByLink();
+    @When("apply sort {string}")
+    public void apply_sort(String sortOption) {
+        if(!sortOption.equals(""))
+            productPage.setSortSelection(sortOption);
     }
 
     @Then("scroll down to the page")
-    public void scroll_down_to_the_page() throws InterruptedException {
+    public void scroll_down_to_the_page() {
         productPage.scrollDownToPage();
     }
 
     @Then("click on next page")
-    public void click_on_next_page() throws InterruptedException {
+    public void click_on_next_page() {
        productPage.clickNextPage();
     }
 
-    @Then("current page is {string}")
+    @Then("current page should contains {string}")
     public void current_page_is(String pageNo) {
         Assert.assertTrue(homePage.verifyCurrentURL(pageNo));
     }

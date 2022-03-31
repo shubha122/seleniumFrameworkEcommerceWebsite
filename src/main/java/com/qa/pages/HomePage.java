@@ -14,19 +14,15 @@ import java.util.Properties;
 public class HomePage {
     private WebDriver driver;
     private ConfigReader configReader;
-    Properties prop;
     ElementUtil elementUtil;
     JavaScriptUtil javaScriptUtil;
-    WebElement web;
 
     //Locator
-    private By popupDismiss = By.xpath(".//*[@class='ext-popup-cross']");
+    private final By popupDismiss = By.xpath(".//*[@class='ext-popup-cross']");
+    private final By categoryMenuOption = By.xpath("//nav[contains(@class,'header__nav header__nav--categories')]");
+    private final By categoryList = By.xpath(".//div[contains(@class,'header-navigation__nav-inner')]//ul[contains(@class,'header__nav-category-list')]/li/dl[contains(@class,'header__nav-category--is-level-1')]/dt/a");
+    private final By subCategoryList = By.xpath("//div[contains(@class,'header-navigation__nav-inner')]//ul[contains(@class,'header__nav-category-list')]/li/dl[contains(@class,'header__nav-category--is-level-2')]/dt/following-sibling::dd/ul/li/a");
 
-//    private WebElement categoryLink = driver.findElement(By.xpath(".//div[@class='header__nav-category-mobile-section-title' and text()='Categories']"));
-    private By selectSubCategory = By.xpath(".//*[@href='/product/category/Smartphone/82']");
-
-
-//    Mobiles & Tablets
     //Constructor
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -37,26 +33,16 @@ public class HomePage {
 
     //page Action
     public void clickOnPopUp() {
-        WebDriverWait wait = new WebDriverWait(driver,30);
-        wait.until(ExpectedConditions.elementToBeClickable(popupDismiss));
+        elementUtil.waitForElementToBeClickable(popupDismiss,30);
         elementUtil.doClick(popupDismiss);
     }
-    public void setSelectCategory(String category) throws InterruptedException {
-        Thread.sleep(3000);
-       WebElement web = elementUtil.getElement(selectSubCategory);
-//        WebElement categoryLink = driver.findElement(By.xpath(".//div[@class='header__nav-category-mobile-section-title' and text()='Categories']"));
-        javaScriptUtil.clickElementByJS(web);
-        WebElement selectCategory = driver.findElement(By.xpath(".//a[text()='"+category+"']"));
-        javaScriptUtil.clickElementByJS(selectCategory);
-    }
-    public ProductPage setSelectSubCategory(String subCategory) {
-        WebElement subCategoryLocator = driver.findElement(By.xpath(".//a[text()='"+subCategory+"']"));
-        javaScriptUtil.clickElementByJS(subCategoryLocator);
-        return new ProductPage(driver);
+    public void setCategoryAndSubCategory(String category,String subCategory){
+        elementUtil.doActionsMoveToElement(categoryMenuOption);
+        elementUtil.waitForRequiredSec(2);
+        elementUtil.selectRequiredItemAndSubItem(categoryList,subCategoryList,category,subCategory);
     }
     public boolean verifyCurrentURL(String expectedUrl){
         return elementUtil.waitForUrl(30, expectedUrl);
     }
-
 
 }

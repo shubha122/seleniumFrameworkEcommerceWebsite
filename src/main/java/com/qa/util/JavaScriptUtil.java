@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class JavaScriptUtil {
 	
@@ -56,6 +57,17 @@ public class JavaScriptUtil {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", element);
 	}
+	public boolean clickElementByJS(List<WebElement> elementList,String itemName) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		for(WebElement element : elementList){
+			if(element.getText().equalsIgnoreCase(itemName)){
+				js.executeScript("arguments[0].click();", element);
+				return true;
+			}
+		}
+		return false;
+	}
+
 
 	public void sendKeysUsingWithId(String id, String value) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;

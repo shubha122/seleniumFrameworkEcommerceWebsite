@@ -21,21 +21,15 @@ public class HomePageSteps {
         List<Map<String, String>> credList = dataTable.asMaps();
         String emailId = credList.get(0).get("email");
         String password = credList.get(0).get("password");
-        loginpage.lauchURL();
         homePage = loginpage.doLogin(emailId, password);
         homePage.clickOnPopUp();
     }
 
-    @Given("click on Categories {string}")
-    public void click_on_categories(String category) throws InterruptedException {
-        loginpage.lauchURL();
-        homePage.setSelectCategory(category);
+    @Given("user select Categories as {string} and subcategory as {string}")
+    public void user_select_categories_as_and_subcategory_as(String category, String subCategory) {
+        homePage.setCategoryAndSubCategory(category,subCategory);
     }
 
-    @When("click on subcategory {string}")
-    public void click_on_subcategory(String subCategory) {
-        homePage.setSelectSubCategory(subCategory);
-    }
     @Then("url should contains {string}")
     public void url_should_contains(String expectedLink) {
         Assert.assertTrue(homePage.verifyCurrentURL(expectedLink));

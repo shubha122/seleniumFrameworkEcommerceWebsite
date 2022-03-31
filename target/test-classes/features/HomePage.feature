@@ -1,11 +1,16 @@
 Feature: Verify category and subcategory options
 
-#  Background:
-#    Given user is already logged in
-#      |email                	|password  |
-#      |qaassignment@shopback.com|Shopback22|
+  Background:
+    Given user is already logged in
+      |email                	|password  |
+      |qaassignment@shopback.com|Shopback22|
 
-  Scenario: Go to categories and select the product item
-    Given click on Categories "Mobiles & Tablets"
-    When click on subcategory "Smartphone"
-    Then url should contains "Smartphone"
+  Scenario Outline: Go to categories and select the product item
+    Given user select Categories as '<Category>' and subcategory as '<SubCategory>'
+    Then url should contains '<SubCategory>'
+
+    Examples:
+    |Category                 |SubCategory|
+    |Mobiles & Tablets        |Smartphone |
+    |Computers & Laptops      |Extender   |
+    |Fashion                  |Tops       |

@@ -1,6 +1,7 @@
 package com.qa.util;
 
 import com.qa.factory.DriverFactory;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import java.time.Duration;
@@ -35,6 +36,7 @@ public class ElementUtil {
 		return element;
 	}
 
+
 	public List<WebElement> getElements(By locator) {
 		return driver.findElements(locator);
 	}
@@ -44,12 +46,16 @@ public class ElementUtil {
 	}
 	
 	public void dopressKeyOnElement(By locator, CharSequence ch) {
-		
+
 		getElement(locator).sendKeys(ch);
 	}
 	
 	public void doSendKeys(By locator, String value) {
 		WebElement element = getElement(locator);
+		element.clear();
+		element.sendKeys(value);
+	}
+	public void doSendKeys(WebElement element, String value) {
 		element.clear();
 		element.sendKeys(value);
 	}
@@ -73,6 +79,10 @@ public class ElementUtil {
 	public void doClick(By locator) {
 		getElement(locator).click();
 	}
+	public void doClick(WebElement element) {
+		element.click();
+	}
+
 
 	public String doGetText(By locator) {
 		return waitForElementPresent(locator, 20).getText();
@@ -103,6 +113,10 @@ public class ElementUtil {
 		Actions act = new Actions(driver);
 		act.moveToElement(getElement(locator)).perform();
 	}
+	public void doActionsMoveToElement(WebElement element) {
+		Actions act = new Actions(driver);
+		act.moveToElement(element).perform();
+	}
 
 	public void doActionsMoveToElementAndClick(By locator) {
 		doActionsMoveToElement(locator);
@@ -117,6 +131,23 @@ public class ElementUtil {
 				break;
 			}
 		}
+	}
+	public boolean selectRequiredItemAndSubItem(By itemLocator, By subItemLocator, String itemName, String subItemName){
+		List<WebElement> itemList = getElements(itemLocator);
+		List<WebElement> subItemList = getElements(subItemLocator);
+		for(WebElement item : itemList){
+			if(item.getText().equalsIgnoreCase(itemName)) {
+				doActionsMoveToElement(item);
+				waitForRequiredSec(2);
+				for (WebElement subItem : subItemList) {
+					if (subItem.getText().equalsIgnoreCase(subItemName)) {
+						doClick(subItem);
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 
 	/********************************** drop down utils ********************/
@@ -293,7 +324,9 @@ public class ElementUtil {
 		WebDriverWait wait = new WebDriverWait(driver, timeOut);
 		return wait.until(ExpectedConditions.visibilityOf(getElement(locator)));
 	}
-
+	public String getValueByAttribute(WebElement element,String attributeName){
+		return element.getAttribute(attributeName);
+	}
 	/**
 	 * This method is specifically for tagName
 	 * 
@@ -361,6 +394,13 @@ public class ElementUtil {
 		try {
 			Thread.sleep(timeInMin * 60 * 1000);
 			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	public void waitForRequiredSec(int timeInSec) {
+		try {
+			Thread.sleep(timeInSec * 1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

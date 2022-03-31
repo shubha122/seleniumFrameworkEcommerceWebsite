@@ -6,17 +6,12 @@ import com.qa.pages.LoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 
 public class LoginPageSteps {
     private LoginPage loginpage = new LoginPage(DriverFactory.getDriver());
     private HomePage homePage = new HomePage(DriverFactory.getDriver());
-    @Given("Go to url")
-    public void go_to_url() {
-        loginpage.lauchURL();
-    }
 
-    @Given("click on Login Signup button")
+    @Given("click on LoginSignup button")
     public void click_on_login_signup_button() {
         loginpage.clickOnLoginSignUpButton();
     }
