@@ -28,6 +28,7 @@ public class ProductPage {
     private final By sortDropdownLink = By.xpath(".//div[@id='dropdown']");
     private final By sortSelection = By.xpath(".//li[@class='dropdown-list-option cursor-pointer']");
     private final By paginationLink = By.xpath(".//div[@class='btn-group pagination-list']/a");
+    private final By pageLink = By.xpath("//footer[@class='text-sb-white-two']");
 
     //Constructor
     public ProductPage(WebDriver driver){
@@ -80,8 +81,8 @@ public class ProductPage {
         javaScriptUtil.clickElementByJS(sortSelectionList,sortOption);
     }
     public void scrollDownToPage() {
-       javaScriptUtil.scrollPageDown();
-       elementUtil.waitForRequiredSec(10);
+       javaScriptUtil.scrollIntoView(elementUtil.getElement(pageLink));
+       elementUtil.waitForRequiredSec(2);
     }
     public void clickNextPage() {
         List<WebElement> paginationList = elementUtil.getElements(paginationLink);

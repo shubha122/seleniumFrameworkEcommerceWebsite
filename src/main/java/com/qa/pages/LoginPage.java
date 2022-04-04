@@ -19,6 +19,7 @@ public class LoginPage {
     private final By nextButton = By.xpath(".//span[text()='Next']");
     private final By password = By.xpath(".//input[@type='password']");
     private final By logOutDropdown = By.xpath(".//div[contains(@class,'header__account-menu--dropdown absolute')]/a");
+    private final By logOutLink = By.xpath("//div[@class='ml-1']");
 
     //Constructor
     public LoginPage(WebDriver driver) {
@@ -46,6 +47,8 @@ public class LoginPage {
         elementUtil.doSendKeys(password, pwd);
     }
     public boolean logOutButtonIsAvailable(String logOut){
+        elementUtil.waitForRequiredSec(3);
+        elementUtil.doActionsMoveToElement(logOutLink);
         return elementUtil.verifyElementInDropDownList(logOutDropdown,logOut);
     }
 

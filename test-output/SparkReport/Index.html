@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">Web Automation Report</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Apr 1, 2022 04:21:30 PM</span></a>
+<a href="#"><span class="badge badge-primary">Apr 4, 2022 12:54:16 PM</span></a>
 </li>
 </ul>
 </div>
@@ -52,6 +52,11 @@
 <span class="ico"><i class="fa fa-list"></i></span>
 </a>
 </li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
+</a>
+</li>
 </ul>
 </div>
 </div>      <div class="vcontainer">
@@ -61,25 +66,25 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Apr 1, 2022 04:21:30 PM</h3>
+<h3>Apr 4, 2022 12:54:16 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Apr 1, 2022 04:24:46 PM</h3>
+<h3>Apr 4, 2022 12:55:11 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Features Passed</p>
-<h3>2</h3>
+<h3>0</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Features Failed</p>
-<h3>0</h3>
+<h3>1</h3>
 </div></div>
 </div>
 </div>
@@ -95,12 +100,12 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'>
-<b>2</b> features passed
+<div><small data-tooltip='0%'>
+<b>0</b> features passed
 </small>
 </div>
 <div>
-<small data-tooltip='0%'><b>0</b> features failed,
+<small data-tooltip='100%'><b>1</b> features failed,
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -118,9 +123,9 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>6</b> scenarios passed</small></div>
+<div><small data-tooltip='0%'><b>0</b> scenarios passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> scenarios failed,
+<small data-tooltip='100%'><b>1</b> scenarios failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
@@ -138,10 +143,10 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>27</b> steps passed</small></div>
+<div><small data-tooltip='84%'><b>16</b> steps passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> steps failed,
-<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+<small data-tooltip='5%'><b>1</b> steps failed,
+<b>2</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
 </div>
@@ -157,7 +162,7 @@
 </div></div>
 <script>
 var timeline = {
-"Verify category and subcategory options":194.685,"Verify Login page Functionality":21.109
+"ShopBack Website for Product Search":54.688
 };
 </script>
 <div class="row">
@@ -192,21 +197,21 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 2,
-failParent: 0,
+passParent: 0,
+failParent: 1,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
-passChild: 6,
-failChild: 0,
+passChild: 0,
+failChild: 1,
 warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 27,
-failGrandChild: 0,
+passGrandChild: 16,
+failGrandChild: 1,
 warningGrandChild: 0,
-skipGrandChild: 0,
+skipGrandChild: 2,
 infoGrandChild: 0,
 eventsCount: 5,
 };
@@ -220,7 +225,7 @@ eventsCount: 5,
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
@@ -228,25 +233,25 @@ eventsCount: 5,
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="pass" test-id="1"
+        <li class="test-item"  status="fail" test-id="1"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">Verify category and subcategory options</p>
+            <p class="name">ShopBack Website for Product Search</p>
             <p class="text-sm">
-              <span>16:21:31 PM</span> / <span>00:03:14:685</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>12:54:16 PM</span> / <span>00:00:54:688</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">Verify category and subcategory options</h5>
-<span class='badge badge-success'>04.01.2022 16:21:31</span>
-<span class='badge badge-danger'>04.01.2022 16:24:46</span>
-<span class='badge badge-default'>00:03:14:685</span>
+<h5 class="test-status text-fail">ShopBack Website for Product Search</h5>
+<span class='badge badge-success'>04.04.2022 12:54:16</span>
+<span class='badge badge-danger'>04.04.2022 12:55:11</span>
+<span class='badge badge-default'>00:00:54:688</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 </div>
 <div class="m-t-10 m-l-5"></div>
@@ -256,132 +261,78 @@ eventsCount: 5,
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Go to categories and select the product item</div>
+        <div class="node" id="2"><span class="badge log fail-bg mr-2">Fail</span>Validate the e2e flow where user logged in and then choose a product from category and subcategory</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
       </div>
     </div>
-        <div class="scenario_outline collapse">
+        <div class="scenario_outline ">
             <div class="card-body l1">
               <div class="card-header">
                 <div class="card-title outline-child">
-                  <div class="node" id="3"><span class="badge log pass-bg mr-2">Pass</span>Go to categories and select the product item</div>
+                  <div class="node" id="3"><span class="badge log fail-bg mr-2">Fail</span>Validate the e2e flow where user logged in and then choose a product from category and subcategory</div>
+                    <div class="status-avatar float-right">
+                      <i class="fa fa-paperclip"></i>
+                    </div>
                 </div>
               </div>
-              <div class="card-body mt-3 collapse">
+              <div class="card-body mt-3 ">
                   <div class="step pass-bg">
-                    <span>Given user is already logged in</span>
-      <div><table class='markup-table table '><tr><td>email</td><td>password</td></tr><tr><td>qaassignment@shopback.com</td><td>Shopback22</td></tr></table>
-      </div>
+                    <span>Given click on LoginSignup button</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Given user select Categories as 'Mobiles & Tablets' and subcategory as 'Smartphone'</span>
+                    <span>When click on Login button</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then url should contains 'Smartphone'</span>
-      <div>
-      </div>
-                  </div>
-              </div>
-            </div>
-            <div class="card-body l1">
-              <div class="card-header">
-                <div class="card-title outline-child">
-                  <div class="node" id="12"><span class="badge log pass-bg mr-2">Pass</span>Go to categories and select the product item</div>
-                </div>
-              </div>
-              <div class="card-body mt-3 collapse">
-                  <div class="step pass-bg">
-                    <span>Given user is already logged in</span>
-      <div><table class='markup-table table '><tr><td>email</td><td>password</td></tr><tr><td>qaassignment@shopback.com</td><td>Shopback22</td></tr></table>
-      </div>
+                    <span>And click on Use Email Address button</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Given user select Categories as 'Computers & Laptops' and subcategory as 'Extender'</span>
+                    <span>Then enter the username 'qaassignment@shopback.com'</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then url should contains 'Extender'</span>
-      <div>
-      </div>
-                  </div>
-              </div>
-            </div>
-            <div class="card-body l1">
-              <div class="card-header">
-                <div class="card-title outline-child">
-                  <div class="node" id="21"><span class="badge log pass-bg mr-2">Pass</span>Go to categories and select the product item</div>
-                </div>
-              </div>
-              <div class="card-body mt-3 collapse">
-                  <div class="step pass-bg">
-                    <span>Given user is already logged in</span>
-      <div><table class='markup-table table '><tr><td>email</td><td>password</td></tr><tr><td>qaassignment@shopback.com</td><td>Shopback22</td></tr></table>
-      </div>
+                    <span>And click on next button</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Given user select Categories as 'Fashion' and subcategory as 'Tops'</span>
+                    <span>Then enter the password 'Shopback22'</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then url should contains 'Tops'</span>
-      <div>
-      </div>
-                  </div>
-              </div>
-            </div>
-        </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab">
-      <div class="card-title">
-        <div class="node" id="46"><span class="badge log pass-bg mr-2">Pass</span>Search product from search box</div>
-      </div>
-    </div>
-        <div class="scenario_outline collapse">
-            <div class="card-body l1">
-              <div class="card-header">
-                <div class="card-title outline-child">
-                  <div class="node" id="47"><span class="badge log pass-bg mr-2">Pass</span>Search product from search box</div>
-                </div>
-              </div>
-              <div class="card-body mt-3 collapse">
-                  <div class="step pass-bg">
-                    <span>Given search the product 'samsung galaxy a51'</span>
+                    <span>And click on next button</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And click on any product from the search list</span>
+                    <span>And dismiss the popup from home page</span>
       <div>
       </div>
                   </div>
-              </div>
-            </div>
-        </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab">
-      <div class="card-title">
-        <div class="node" id="55"><span class="badge log pass-bg mr-2">Pass</span>Apply filters and sort then click on next page</div>
+                  <div class="step pass-bg">
+                    <span>Then user can see "Log out" option now</span>
+      <div>
       </div>
-    </div>
-        <div class="scenario_outline collapse">
-            <div class="card-body l1">
-              <div class="card-header">
-                <div class="card-title outline-child">
-                  <div class="node" id="56"><span class="badge log pass-bg mr-2">Pass</span>Apply filters and sort then click on next page</div>
-                </div>
-              </div>
-              <div class="card-body mt-3 collapse">
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When user select Categories as 'Mobiles & Tablets' and subcategory as 'Smartphone'</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then user should be on 'Smartphone' page</span>
+      <div>
+      </div>
+                  </div>
                   <div class="step pass-bg">
                     <span>Given apply filter on category '' and brand 'Samsung' and cashback store 'Lazada'</span>
       <div>
@@ -402,107 +353,63 @@ eventsCount: 5,
       <div>
       </div>
                   </div>
-                  <div class="step pass-bg">
+                  <div class="step fail-bg">
                     <span>Then scroll down to the page</span>
       <div>
+        <textarea disabled class="code-block">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//footer[@class='text-sb-white-two']"}
+  (Session info: chrome=99.0.4844.84)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-NDSIENQM', ip: 'fe80:0:0:0:1468:7fde:dcbd:6efc%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.16', java.version: '1.8.0_271'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.84, chrome: {chromedriverVersion: 99.0.4844.51 (d537ec02474b5..., userDataDir: /var/folders/sf/qdg9jv452tg...}, goog:chromeOptions: {debuggerAddress: localhost:54115}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: d1ed3b63fee75de5d288428b20b43269
+*** Element info: {Using=xpath, value=//footer[@class='text-sb-white-two']}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at com.qa.util.ElementUtil.getElement(ElementUtil.java:32)
+	at com.qa.pages.ProductPage.scrollDownToPage(ProductPage.java:84)
+	at stepdefinitions.ProductPageSteps.scroll_down_to_the_page(ProductPageSteps.java:59)
+	at ?.scroll down to the page(file:///Users/shubhajain/Documents/SeleniumFramework/src/test/resources/features/ShopBackProduct.feature:21)
+</textarea>
+      
       </div>
                   </div>
-                  <div class="step pass-bg">
+                  <div class="step skip-bg">
                     <span>And click on next page</span>
-      <div>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>Then user should be on 'p=2' page</span>
+      <div>Step skipped
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then url should contains 'p=2'</span>
+                    <span>appHooks.ApplicationHooks.tearDown(io.cucumber.java.Scenario)</span>
+      <div>_V_a_l_i_d_a_t_e_ _t_h_e_ _e_2_e_ _f_l_o_w_ _w_h_e_r_e_ _u_s_e_r_ _l_o_g_g_e_d_ _i_n_ _a_n_d_ _t_h_e_n_ _c_h_o_o_s_e_ _a_ _p_r_o_d_u_c_t_ _f_r_o_m_ _c_a_t_e_g_o_r_y_ _a_n_d_ _s_u_b_c_a_t_e_g_o_r_y_
+          <div class="row mb-3"><div class="col-md-3">
+    <img data-featherlight='../embedded1.png' src="../embedded1.png">
+    
+    </div></div>
+</div>
       <div>
       </div>
                   </div>
               </div>
             </div>
-        </div>
-  </div>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="30"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">Verify Login page Functionality</p>
-            <p class="text-sm">
-              <span>16:23:31 PM</span> / <span>00:00:21:109</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">Verify Login page Functionality</h5>
-<span class='badge badge-success'>04.01.2022 16:23:31</span>
-<span class='badge badge-danger'>04.01.2022 16:23:52</span>
-<span class='badge badge-default'>00:00:21:109</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=30</span>
-</div>
-<div class="m-t-10 m-l-5"></div>
-</div>
-</div>
-<div class="accordion mt-4">
-  <div class="card">
-    <div class="card-header" role="tab">
-      <div class="card-title">
-        <div class="node" id="31"><span class="badge log pass-bg mr-2">Pass</span>Verify user is able to login with email and password</div>
-      </div>
-    </div>
-        <div class="collapse">
-          <div class="card-body">
-              <div class="step pass-bg" title="stepdefinitions.LoginPageSteps.click_on_login_signup_button()">
-                <span>Given click on LoginSignup button</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepdefinitions.LoginPageSteps.click_on_login_button()">
-                <span>When click on Login button</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepdefinitions.LoginPageSteps.click_on_use_email_address_button()">
-                <span>And click on Use Email Address button</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepdefinitions.LoginPageSteps.enter_the_username(java.lang.String)">
-                <span>Then enter the username "qaassignment@shopback.com"</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepdefinitions.LoginPageSteps.click_on_next_button()">
-                <span>And click on next button</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepdefinitions.LoginPageSteps.enter_the_password(java.lang.String)">
-                <span>Then enter the password "Shopback22"</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepdefinitions.LoginPageSteps.click_on_next_button()">
-                <span>And click on next button</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepdefinitions.LoginPageSteps.user_is_successfully_logged_in()">
-                <span>Then user is successfully logged in</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepdefinitions.LoginPageSteps.dismiss_the_popup_from_home_page()">
-                <span>And dismiss the popup from home page</span>
-      <div>
-      </div>
-              </div>
-          </div>
         </div>
   </div>
 </div>
@@ -517,7 +424,59 @@ eventsCount: 5,
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
-        </div>
+<div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">org.openqa.selenium.NoSuchElementException</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>org.openqa.selenium.NoSuchElementException</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>12:54:40 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='22'>Then scroll down to the page</a>
+<div class="">
+<span class="badge badge-default">ShopBack Website for Product Search.Validate the e2e flow where user logged in and then choose a product from category and subcategory.Then scroll down to the page</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div>        </div>
       </div>
     </div>
   </div>

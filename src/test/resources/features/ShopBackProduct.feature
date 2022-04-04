@@ -10,8 +10,8 @@ Feature: ShopBack Website for Product Search
     And click on next button
     Then enter the password '<password>'
     And click on next button
-    Then user can see "Log out" option now
     And dismiss the popup from home page
+    Then user can see "Log out" option now
     When user select Categories as '<Category>' and subcategory as '<SubCategory>'
     Then user should be on '<SubCategory>' page
     Given apply filter on category '<categoryFilter>' and brand '<brandFilter>' and cashback store '<cashbackStoreFilter>'

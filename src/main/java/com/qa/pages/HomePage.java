@@ -37,8 +37,9 @@ public class HomePage {
         elementUtil.doClick(popupDismiss);
     }
     public void setCategoryAndSubCategory(String category,String subCategory){
+        elementUtil.waitForRequiredSec(3);
         elementUtil.doActionsMoveToElement(categoryMenuOption);
-        elementUtil.waitForRequiredSec(2);
+        elementUtil.waitForRequiredSec(3);
         elementUtil.selectRequiredItemAndSubItem(categoryList,subCategoryList,category,subCategory);
     }
     public boolean verifyCurrentURL(String expectedUrl){
