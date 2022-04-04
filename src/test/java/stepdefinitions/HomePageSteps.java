@@ -30,8 +30,8 @@ public class HomePageSteps {
         homePage.setCategoryAndSubCategory(category,subCategory);
     }
 
-    @Then("url should contains {string}")
-    public void url_should_contains(String expectedLink) {
+    @Then("user should be on {string} page")
+    public void url_should_be_on_the_page(String expectedLink) {
         Assert.assertTrue(homePage.verifyCurrentURL(expectedLink));
     }
 

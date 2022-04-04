@@ -3,6 +3,9 @@ package com.qa.pages;
 import com.qa.util.ElementUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class LoginPage {
     private WebDriver driver;
@@ -15,6 +18,7 @@ public class LoginPage {
     private final By emailText = By.xpath(".//input[@type='email']");
     private final By nextButton = By.xpath(".//span[text()='Next']");
     private final By password = By.xpath(".//input[@type='password']");
+    private final By logOutDropdown = By.xpath(".//div[contains(@class,'header__account-menu--dropdown absolute')]/a");
 
     //Constructor
     public LoginPage(WebDriver driver) {
@@ -41,8 +45,8 @@ public class LoginPage {
     public void setPassword(String pwd) {
         elementUtil.doSendKeys(password, pwd);
     }
-    public boolean loginSignUpButtonIsNotVisible(){
-        return elementUtil.doIsDisplayed(loginSignUpButton);
+    public boolean logOutButtonIsAvailable(String logOut){
+        return elementUtil.verifyElementInDropDownList(logOutDropdown,logOut);
     }
 
     public HomePage doLogin(String email, String pwd) {

@@ -1,0 +1,5 @@
+stepdefinitions/HomePageSteps.class
+stepdefinitions/LoginPageSteps.class
+testRunners/MyTestRunner.class
+stepdefinitions/ProductPageSteps.class
+appHooks/ApplicationHooks.class

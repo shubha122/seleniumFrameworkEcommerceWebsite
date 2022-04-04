@@ -43,10 +43,10 @@ public class ApplicationHooks {
         prop = configReader.init_prop();
         driver.get(prop.getProperty("url"));
     }
-    @After(order = 0)
-    public void quitBrowser(){
-        driver.quit();
-    }
+//    @After(order = 0)
+//    public void quitBrowser(){
+//        driver.quit();
+//    }
     @After(order = 1)
     public void tearDown(Scenario scenario){
         if(scenario.isFailed()){

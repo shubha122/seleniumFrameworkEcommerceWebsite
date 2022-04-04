@@ -6,7 +6,7 @@ Feature: Verify category and subcategory options
     And click on any product from the search list
     Examples:
     |ProductName       |
-    |samsung galaxy a51|
+    |Samsung galaxy s10|
 
 #  product should be in the search list
 
@@ -17,9 +17,10 @@ Feature: Verify category and subcategory options
       And apply sort '<sort>'
       Then scroll down to the page
       And click on next page
-      Then current page should contains '<pageNumber>'
+      Then url should contains '<pageNumber>'
       Examples:
-      |category|brand  |cashbackStore|minPrice|maxPrice|sort             |pageNumber|
+      |category|brand  |cashbackStore|minPrice|maxPrice|sort              |pageNumber|
       |        |Samsung|Lazada       |100     |1000     |Price Low to High|p=2       |
 
 #      need to do all steps from home page, click on cat and subcat
+#  check assert how

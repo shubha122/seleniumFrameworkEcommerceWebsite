@@ -16,29 +16,33 @@ public class ProductPageSteps {
     public void search_the_product(String productName) {
         productPage.setProductDetails(productName);
     }
+
     @Then("{string} should be in the search list")
     public void should_be_in_the_search_list() {
 
     }
+
     @Given("click on any product from the search list")
     public void click_on_any_product_from_the_search_list() {
         productPage.clickOnProduct();
     }
 
     @Given("apply filter on category {string} and brand {string} and cashback store {string}")
-    public void apply_filter_brand_cashback(String categoryFilter,String brandFilter,String storeFilter) {
-        if(!categoryFilter.equals(""))
+    public void apply_filter_brand_cashback(String categoryFilter, String brandFilter, String storeFilter) {
+        if (!categoryFilter.equals(""))
             productPage.setCategoryFilter(categoryFilter);
-        if(!brandFilter.equals(""))
+        if (!brandFilter.equals(""))
             productPage.setBrandFilter(brandFilter);
-        if(!storeFilter.equals(""))
-        productPage.setCashbackStoreFilter(storeFilter);
+        if (!storeFilter.equals(""))
+            productPage.setCashbackStoreFilter(storeFilter);
     }
+
     @When("enter min and max price {string} and {string}")
-    public void enter_min_max_price(String minPrice,String maxPrice){
-        if(!minPrice.equals("") && !maxPrice.equals(""))
-            productPage.setPriceInput(minPrice,maxPrice);
+    public void enter_min_max_price(String minPrice, String maxPrice) {
+        if (!minPrice.equals("") && !maxPrice.equals(""))
+            productPage.setPriceInput(minPrice, maxPrice);
     }
+
     @When("click on done button")
     public void click_on_done_button() {
         productPage.clickOnDoneButton();
@@ -46,7 +50,7 @@ public class ProductPageSteps {
 
     @When("apply sort {string}")
     public void apply_sort(String sortOption) {
-        if(!sortOption.equals(""))
+        if (!sortOption.equals(""))
             productPage.setSortSelection(sortOption);
     }
 
@@ -57,11 +61,6 @@ public class ProductPageSteps {
 
     @Then("click on next page")
     public void click_on_next_page() {
-       productPage.clickNextPage();
-    }
-
-    @Then("current page should contains {string}")
-    public void current_page_is(String pageNo) {
-        Assert.assertTrue(homePage.verifyCurrentURL(pageNo));
+        productPage.clickNextPage();
     }
 }

@@ -6,6 +6,7 @@ import com.qa.pages.LoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class LoginPageSteps {
     private LoginPage loginpage = new LoginPage(DriverFactory.getDriver());
@@ -41,10 +42,9 @@ public class LoginPageSteps {
         loginpage.setPassword(password);
     }
 
-    @Then("user is successfully logged in")
-    public void user_is_successfully_logged_in() {
-        boolean result = loginpage.loginSignUpButtonIsNotVisible();
-        System.out.println(result);
+    @Then("user can see {string} option now")
+    public void user_can_see_logout_option(String logOut) {
+        Assert.assertTrue(loginpage.logOutButtonIsAvailable(logOut));
     }
 
     @Then("dismiss the popup from home page")

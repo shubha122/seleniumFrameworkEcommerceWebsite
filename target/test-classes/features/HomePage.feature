@@ -7,7 +7,7 @@ Feature: Verify category and subcategory options
 
   Scenario Outline: Go to categories and select the product item
     Given user select Categories as '<Category>' and subcategory as '<SubCategory>'
-    Then url should contains '<SubCategory>'
+    Then user should be on '<SubCategory>' page
 
     Examples:
     |Category                 |SubCategory|

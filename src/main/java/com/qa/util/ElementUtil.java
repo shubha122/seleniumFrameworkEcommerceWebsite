@@ -180,6 +180,16 @@ public class ElementUtil {
 			}
 		}
 	}
+	public boolean verifyElementInDropDownList(By itemLocator, String value) {
+		List<WebElement> itemList = getElements(itemLocator);
+		for (WebElement item : itemList) {
+			System.out.println(item.getText());
+			if (item.getText().equalsIgnoreCase(value)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public void doSelectDropDownValueWithoutSelect(By locator, String value) {
 		List<WebElement> list = getElements(locator);
